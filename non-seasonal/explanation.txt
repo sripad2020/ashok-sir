@@ -1,0 +1,113 @@
+Code Explanation (Step-by-Step)
+    Import Libraries
+
+    pandas, numpy: Data manipulation
+
+    plotly.graph_objects, plotly.express: Interactive visualizations
+
+    statsmodels: Time series analysis (ADF test, ARIMA, ACF/PACF plots)
+
+    sklearn.metrics: RMSE calculation for model evaluation
+
+    warnings: Suppress unnecessary warnings
+
+    Load & Preprocess Data
+
+    Load CSV with pd.read_csv() and parse dates.
+
+    Filter Argentina's data and ensure daily frequency (asfreq('D')).
+
+    Initial Data Visualization
+
+    Plot raw confirmed cases using plotly (interactive line chart with markers).
+
+Stationarity Check
+
+    ADF Test: Checks if data is stationary (null hypothesis: non-stationary).
+
+    Rolling Statistics Plot: Visualizes rolling mean and standard deviation.
+
+    Differencing: Applies 1st and 2nd differences to stabilize mean/variance.
+
+    ACF & PACF Plots
+
+    Plots autocorrelation (ACF) and partial autocorrelation (PACF) to identify ARIMA parameters (p, d, q).
+
+    ARIMA Model Training
+
+    Splits data into train (80%) and test (20%).
+
+    Fits ARIMA(1,2,1) based on ACF/PACF analysis.
+
+    Prints model summary (coefficients, AIC/BIC, etc.).
+
+    Residual Analysis
+
+    Plots residuals over time and their distribution.
+
+    Ljung-Box Test: Checks if residuals are white noise (p-value > 0.05 indicates no autocorrelation).
+
+    Forecasting
+
+    Forecasts test data and compares with actuals (interactive plot).
+
+    Computes RMSE to evaluate model accuracy.
+
+    Generates a 30-day future forecast with simulated confidence intervals.
+
+    Enhanced Visualization
+
+    Interactive Elements: Hover tooltips, zoom/pan, range sliders.
+
+    Confidence Intervals: Shaded regions around forecasts (simulated).
+
+    Tabular Forecast: Interactive table with dates, forecasts, and bounds.
+
+Approach & Key Improvements
+    Interactive Visuals Over Static Plots
+
+    Replaced matplotlib with plotly for zooming, hovering, and dynamic exploration.
+
+    Comprehensive Stationarity Analysis
+
+    Combined statistical tests (ADF) with rolling statistics visuals for clarity.
+
+    Model Diagnostics
+
+    Residual plots + Ljung-Box test to ensure model adequacy.
+
+    User-Friendly Forecasts
+
+    Confidence Intervals: Added shaded regions to show uncertainty.
+
+    Dynamic Tables: Forecast details in an interactive table.
+
+    Professional Styling
+
+    Used plotly_dark template for readability.
+
+    Consistent color schemes and annotations (e.g., RMSE on chart).
+
+    Navigation Features
+
+    Date range selectors to focus on specific periods.
+
+    Mobile-responsive design.
+
+Key Technical Choices
+    ARIMA Order (1,2,1): Selected based on ACF/PACF decay patterns after 2nd differencing.
+
+    Differencing: Applied twice to achieve stationarity (ADF test confirmed).
+
+    Simulated Confidence Intervals: For illustration (actual intervals require get_forecast() in statsmodels).
+
+    Outputs Generated
+    Interactive time series plots (historical + forecast).
+
+    Stationarity test results (ADF test stats + rolling metrics).
+
+    Model summary (coefficients, performance metrics).
+
+    Residual diagnostics (plots + statistical test).
+
+    30-day forecast with bounds and tabular data.
