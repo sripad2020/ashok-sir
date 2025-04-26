@@ -1,0 +1,107 @@
+ Data Loading & Preprocessing
+    Imports: Uses pandas, plotly, statsmodels, seaborn, and other libraries for analysis and visualization.
+
+    Data Loading: Reads Country Wise Gender.csv and fills missing values with 0.
+
+    Type Conversion: Converts all Male/Female columns to integers for analysis.
+
+2. Time Series Preparation
+    Aggregation: Sums male and female counts across all countries per year to create a total population time series.
+
+    Stationarity Check:
+
+    Performs Augmented Dickey-Fuller (ADF) test to check stationarity.
+
+    Applies first differencing if non-stationary (p-value > 0.05).
+
+    Plots the differenced series using Plotly.
+
+3. Exploratory Data Analysis (EDA)
+    Stacked Bar Plot (2019):
+
+    Compares male vs. female populations by country.
+
+    Histogram (2020 Male):
+
+    Distribution of male population counts across countries.
+
+    Pie Chart (Top 5 by 2020 Female):
+
+    Proportions of female populations for top 5 countries.
+
+    Scatter Matrix (Pairplot):
+
+    Relationships between male/female populations (2018–2020).
+
+    Grouped Bar Chart (2020):
+
+    Side-by-side comparison of male vs. female counts by country.
+
+4. Time Series Modeling
+    MA Model (Moving Average):
+
+    ARIMA(0,1,1) to capture short-term fluctuations.
+
+    ARMA Model (AutoRegressive Moving Average):
+
+    ARMA(2,2) for combined autoregressive and moving average effects.
+
+    ARIMA Model (Integrated ARMA):
+
+    ARIMA(1,1,1) with differencing for non-stationary data.
+
+    VARMA Model (Vector ARMA):
+
+    Models multivariate series (male and female totals) with VARMAX(1,1).
+
+5. Model Diagnostics
+    Parameter Redundancy Check:
+
+    Interactive Plotly bar charts show p-values and coefficients for each model parameter.
+
+    Highlights significant parameters (✅ p < 0.05) vs. redundant ones (⚠️).
+
+    Residual Analysis:
+
+    Plots: Residual time series, histograms, ACF/PACF, Q-Q plots.
+
+    Tests: Jarque-Bera test for normality.
+
+    Checks for white noise (no autocorrelation) in residuals.
+
+6. Forecasting with ARIMA-GARCH
+    ARIMA Forecast:
+
+    Predicts future values using the fitted ARIMA(1,1,1) model.
+
+    GARCH Volatility Modeling:
+
+    Models residual volatility with GARCH(1,1).
+
+    Forecasts conditional variance (uncertainty bands).
+
+    Visualization:
+
+    Combines ARIMA forecasts with GARCH volatility bands (95% confidence intervals).
+
+Key Techniques & Outputs
+    Stationarity Handling: Differencing for non-stationary data.
+
+    Model Comparison: MA, ARMA, ARIMA, VARMA.
+
+    Interactive Visualization: Plotly for dynamic EDA and diagnostics.
+
+    Volatility Modeling: GARCH to quantify forecast uncertainty.
+
+    Diagnostic Tests: ADF, Jarque-Bera, Ljung-Box (via ACF/PACF).
+
+Purpose
+Objective: Analyze gender-wise passenger trends by country and forecast future totals.
+
+Outcome:
+
+    Identifies key patterns (e.g., top countries, gender distributions).
+
+    Validates model fit (residual diagnostics).
+
+    Provides forecasts with uncertainty estimates using ARIMA-GARCH.

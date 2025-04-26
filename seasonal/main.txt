@@ -1,0 +1,95 @@
+1. Data Loading & Initial Visualization
+    Imports: Loads essential libraries (pandas, numpy, plotly, statsmodels, arch) for time series analysis.
+
+    Data Preparation:
+
+    Reads General Data 2014-2020.csv and converts the year column to datetime.
+
+    Sets year as the index for time series operations.
+
+    Exploratory Visualization:
+
+    Creates a grid of subplots (7 rows × 4 cols) to visualize all time series in the dataset.
+
+    Highlights the main metric (noftaii) with a dedicated line plot.
+
+2. Data Preprocessing
+    Missing Values:
+
+    Prints missing value counts and fills them using forward fill (ffill).
+
+    Stationarity Check:
+
+    Uses the Augmented Dickey-Fuller (ADF) test to check stationarity.
+
+    Applies first and second differencing if needed (p-value > 0.05).
+
+3. Model Identification (ARIMA)
+    ACF/PACF Analysis:
+
+    Computes autocorrelation (ACF) and partial autocorrelation (PACF) with dynamic lag selection.
+
+    Plots ACF/PACF with confidence intervals (using Plotly) to guide ARIMA parameter selection (p, d, q).
+
+    Grid Search for Best ARIMA:
+
+    Evaluates ARIMA models over a range of (p,d,q) values (e.g., p=0-2, d=0-1, q=0-2).
+
+    Selects the model with the lowest Akaike Information Criterion (AIC).
+
+4. Model Diagnostics
+    Residual Analysis:
+
+    Ljung-Box Test: Checks for autocorrelation in residuals (white noise).
+
+    Visualization: Plots residuals (time series and histogram) to validate normality and randomness.
+
+    Model Summary:
+
+    Prints coefficients, p-values, and goodness-of-fit metrics for the best ARIMA model.
+
+5. Forecasting
+    ARIMA Forecast:
+
+    Generates a 3-year forecast with 95% confidence intervals.
+
+    Visualizes actual vs. forecasted values with uncertainty bands (Plotly).
+
+    Volatility Modeling (GARCH):
+
+    Fits a GARCH(1,1) model to ARIMA residuals to capture volatility clustering.
+
+    Plots conditional volatility over time.
+
+Key Techniques & Outputs
+    Stationarity Handling: Differencing and ADF tests.
+
+    Parameter Selection: ACF/PACF analysis + grid search for optimal ARIMA.
+
+    Diagnostics: Residual checks (Ljung-Box, visual inspection).
+
+    Forecasting: Point forecasts + confidence intervals.
+
+    Volatility: GARCH modeling for risk/uncertainty quantification.
+
+    Purpose
+    Objective: Analyze and forecast the main metric (noftaii) using ARIMA-GARCH.
+
+    Outcome:
+
+    Identifies optimal ARIMA parameters.
+
+    Validates model assumptions (residual diagnostics).
+
+    Provides forecasts with volatility estimates for decision-making.
+
+Visualizations
+    Time Series Grid: Overview of all variables.
+
+    ACF/PACF Plots: For ARIMA parameter selection.
+
+    Residual Plots: For model validation.
+
+    Forecast Plot: With confidence intervals.
+
+    Volatility Plot: From GARCH model.

@@ -1,0 +1,126 @@
+1. Data Loading & Cleaning
+    Imports: Loads necessary libraries (pandas, numpy, plotly, statsmodels, sklearn, arch, etc.) for data analysis, visualization, and time series modeling.
+
+    Data Loading: Reads the CSV file Country Wise Airport.csv.
+
+    Cleaning:
+
+    Strips whitespace from column names.
+
+    Fixes data entry errors (e.g., replaces 57.l with 57.1).
+
+    Converts numeric columns to float (handling errors with coerce).
+
+2. Data Reshaping
+    Long Format Conversion:
+
+    Reshapes the data from wide to long format for easier analysis.
+
+    Combines columns like 2014 Delhi (Airport) into rows with columns: Country, Year, Airport, Percentage.
+
+    Missing Values: Drops rows with NaN values.
+
+3. Exploratory Data Analysis (EDA)
+    Top Countries: Identifies top 10 countries by average passenger percentage.
+
+    Visualizations:
+
+    Line Plot: Trends of passenger percentages for top countries (2014–2020).
+
+    Heatmap: Average passenger distribution across airports and years.
+
+    Sunburst Chart: Hierarchical view of passenger distribution by country and airport (2019).
+
+    Bar Chart: Airport preferences by country (2019).
+
+    Faceted Line Plots: Trends for top airports by country.
+
+    Choropleth Map: Global passenger distribution to Indian airports (2019).
+
+    Animated Scatter Plot: Evolution of airport preferences over time.
+
+4. Time Series Analysis (ARIMA Modeling)
+    Data Preparation:
+
+    Extracts time series data for a specific country-airport pair (e.g., United States Of America at Delhi).
+
+    Converts index to datetime with annual frequency (AS-JAN).
+
+    Stationarity Check:
+
+    Uses the Augmented Dickey-Fuller (ADF) test to check for stationarity.
+
+    Plots rolling mean/std to visualize trends.
+
+    Applies differencing/log transformation if non-stationary.
+
+    Model Identification:
+
+    Plots ACF/PACF to determine ARIMA parameters (p, d, q).
+
+    Fits ARIMA model (e.g., ARIMA(1,1,1)).
+
+    Model Diagnostics:
+
+    Checks residuals for white noise using Ljung-Box test.
+
+    Plots ACF/PACF of residuals to validate model fit.
+
+    Forecasting:
+
+    Forecasts 5 future steps and plots results.
+
+5. Alternative Forecasting Models
+    SARIMA: Seasonal ARIMA with seasonal order (1,1,1,12).
+
+    Exponential Smoothing: Holt-Winters method with additive trend/seasonality.
+
+    Linear Regression: Uses time as a feature for simple trend projection.
+
+    Comparison:
+
+    Plots forecasts from all models for visual comparison.
+
+    Prints forecasted values for each model.
+
+6. Volatility Modeling (ARIMA-GARCH)
+    GARCH Model:
+
+    Models residual volatility using GARCH(1,1).
+
+    Forecasts conditional variance (volatility) for the next 5 steps.
+
+    Visualization:
+
+    Combines ARIMA forecasts with GARCH volatility bands (upper/lower bounds).
+
+    Uses Plotly for interactive plotting with annotations.
+
+7. Output & Reporting
+    Forecast Table:
+
+    Displays forecasted values, volatility (std dev), and confidence bounds.
+
+Diagnostic Metrics:
+
+    Summarizes model performance (AIC, BIC, Ljung-Box p-values).
+
+    Key Techniques Used
+    Data Wrangling: Reshaping, cleaning, and aggregation.
+
+    Time Series Decomposition: Stationarity checks, differencing.
+
+Modeling:
+
+    ARIMA/SARIMA for trend/seasonality.
+
+    GARCH for volatility clustering.
+
+    Validation: Residual diagnostics (ACF/PACF, Ljung-Box).
+
+    Visualization: Interactive plots with Plotly/Matplotlib.
+
+Purpose
+Objective: Analyze passenger traffic patterns at Indian airports by nationality and forecast future trends.
+
+Outcome: Identifies key trends, validates model accuracy, and provides actionable forecasts with uncertainty estimates.
